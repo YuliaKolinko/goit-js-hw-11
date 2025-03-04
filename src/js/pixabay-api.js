@@ -1,4 +1,4 @@
-export function getUrl(Words) {
+export function getUrl(request) {
   const API_KEY = '49149625-6c85390ad8fbd016bc28c7d7b';
   const BASE_URL = 'https://pixabay.com/api/';
 
@@ -7,10 +7,10 @@ export function getUrl(Words) {
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: true,
-    per_page: 12,
+    per_page: 15,
   };
 
-  let url = `${BASE_URL}?key=${API_KEY}&q=${query}&image_type=${ImageParams.image_type}&orientation=${ImageParams.orientation}&safesearch=${ImageParams.safesearch}&per_page=${ImageParams.per_page}&page=${page}`;
+  let URL = `${BASE_URL}` + `${API_KEY}` + '&q=' + encodeURIComponent(request);
 
   for (const param in imageParams) {
     URL += `&${param}=${imageParams[param]}`;
