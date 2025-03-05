@@ -1,6 +1,7 @@
 export default function renderImages(images) {
+  console.log('Дані для рендерингу:', images); // Додано для перевірки даних
   const gallery = document.querySelector('.gallery');
-  const form = document.querySelector('.search-form');
+  // const form = document.querySelector('.form');
   //   form.addEventListener('submit', searchImages);
   const galleryArray = images.hits.map(image => {
     const {
