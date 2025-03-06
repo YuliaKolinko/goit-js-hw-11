@@ -3,15 +3,15 @@ import{S,i as m}from"./assets/vendor-BSrUI5OQ.js";(function(){const o=document.c
     <span class="description-name">Likes</span>
     <span class="description-counts">${a}</span>
   </div>
-  <div class="item-info-container
+  <div class="item-info-container">
     <span class="description-name">Views</span>
     <span class="description-counts">${A}</span>
   </div>
-  <div class="item-info-container
+  <div class="item-info-container">
     <span class="description-name">Comments</span>
     <span class="description-counts">${y}</span>
   </div>
-  <div class="item-info-container
+  <div class="item-info-container">
     <span class="description-name">Downloads</span>
     <span class="description-counts">${E}</span>
   </div>
