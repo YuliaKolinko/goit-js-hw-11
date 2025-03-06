@@ -33,15 +33,15 @@ export default function renderImages(images) {
     <span class="description-name">Likes</span>
     <span class="description-counts">${likes}</span>
   </div>
-  <div class="item-info-container
+  <div class="item-info-container">
     <span class="description-name">Views</span>
     <span class="description-counts">${views}</span>
   </div>
-  <div class="item-info-container
+  <div class="item-info-container">
     <span class="description-name">Comments</span>
     <span class="description-counts">${comments}</span>
   </div>
-  <div class="item-info-container
+  <div class="item-info-container">
     <span class="description-name">Downloads</span>
     <span class="description-counts">${downloads}</span>
   </div>
