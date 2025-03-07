@@ -1,4 +1,3 @@
-import axios from 'axios';
 // iziToast імпорт бібліотеки
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -8,8 +7,8 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 // loaders імпорт бібліотеки
 import 'loaders.css/loaders.min.css';
 // Імпорт функцій
-import getUrl from './js/pixabay-api';
-import renderImages from './js/render-functions';
+import { responseData } from './js/pixabay-api';
+import { renderImages, clearGallery } from './js/render-functions';
 // Імпорт іконок
 import iconSvgError from './img/icon/Group.png';
 
@@ -28,8 +27,10 @@ const errorMesage = {
 let lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
   captionsData: 'alt',
+  captionType: 'attr',
   captionDelay: 250,
   animationSpeed: 350,
+  captionPosition: 'bottom',
 });
 
 lightbox.on('show.simplelightbox', function () {});
@@ -50,30 +51,16 @@ function searchImages(event) {
   // Показуємо лоадер
   loaderElement.classList.remove('visually-hidden');
   // Очищаємо галерею
-  gallery.innerHTML = '';
-  // Формуємо URL для запиту
-  const responseUrl = getUrl(query);
-  console.log('Запит до API:', responseUrl); // Додано для перевірки URL
+  clearGallery();
   // Очищаємо поле вводу
   form.reset();
   // Виконуємо запит на сервер
-  fetch(responseUrl, {
-    headers: {
-      Accept: 'application/json',
-    },
-  })
-    // Обробляємо відповідь
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-      return response.json();
-    })
-    // Перевіряємо, чи знайдено зображення
+  responseData(query)
     .then(data => {
-      if (data.hits.length === 0) {
+      const images = data.hits;
+      console.log('Отримані дані:', images); // Додано для перевірки даних
+      if (images.length === 0) {
         iziToast.show(errorMesage);
-        console.log('Отримані дані:', data); // Додано для перевірки даних
         return;
       }
       // Додаємо знайдені зображення в галерею
